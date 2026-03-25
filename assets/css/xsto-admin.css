@@ -1,0 +1,194 @@
+/* ==========================================================================
+   XSTO Pinned Scroll — Admin Styles
+   All classes use xsto-* prefix to avoid WP core conflicts.
+   ========================================================================== */
+
+.xsto-admin .xsto-admin__section {
+    margin-bottom: 30px;
+}
+
+.xsto-admin code {
+    background: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+   Heading row (title + add button)
+   -------------------------------------------------------------------------- */
+.xsto-repeater__heading-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.xsto-repeater__heading-row h2 {
+    margin: 0;
+}
+
+.xsto-add-row-btn .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+    margin-right: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Row (each industry)
+   -------------------------------------------------------------------------- */
+.xsto-row {
+    margin-bottom: 12px;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.xsto-row.ui-sortable-helper {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.xsto-row__placeholder {
+    border: 2px dashed #2271b1;
+    background: #f0f6fc;
+    margin-bottom: 12px;
+    min-height: 52px;
+    border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Row header
+   -------------------------------------------------------------------------- */
+.xsto-row__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-bottom: 1px solid #dcdcde;
+    background: #f9f9f9;
+    border-radius: 4px 4px 0 0;
+}
+
+.xsto-row__header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.xsto-row__header-right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.xsto-row__drag {
+    cursor: grab;
+    color: #999;
+    font-size: 18px;
+}
+
+.xsto-row__drag:hover {
+    color: #2271b1;
+}
+
+.xsto-row__num {
+    display: inline-block;
+    background: #2271b1;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 3px;
+    line-height: 1;
+}
+
+.xsto-row__title-preview {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Row action buttons */
+.xsto-row__toggle,
+.xsto-row__remove {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: #787c82;
+    line-height: 1;
+}
+
+.xsto-row__toggle:hover {
+    color: #2271b1;
+}
+
+.xsto-row__remove:hover {
+    color: #d63638;
+}
+
+/* --------------------------------------------------------------------------
+   Row body (fields)
+   -------------------------------------------------------------------------- */
+.xsto-row__body {
+    padding: 4px 16px 16px;
+}
+
+.xsto-row__body .form-table th {
+    width: 130px;
+    padding: 12px 10px 12px 0;
+    font-weight: 400;
+}
+
+/* --------------------------------------------------------------------------
+   Image field
+   -------------------------------------------------------------------------- */
+.xsto-image-field {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.xsto-image-preview {
+    width: 180px;
+    height: 130px;
+    border: 2px dashed #dcdcde;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+    flex-shrink: 0;
+}
+
+.xsto-image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.xsto-image-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   Empty state
+   -------------------------------------------------------------------------- */
+.xsto-repeater__empty {
+    background: #f9f9f9;
+    border: 2px dashed #dcdcde;
+    border-radius: 6px;
+    padding: 40px 20px;
+    text-align: center;
+    color: #787c82;
+}
+
+.xsto-repeater__empty p {
+    margin: 0;
+    font-size: 14px;
+}

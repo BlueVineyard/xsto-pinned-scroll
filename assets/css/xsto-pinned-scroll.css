@@ -1,0 +1,343 @@
+/* ==========================================================================
+   XSTO Pinned Scroll — Front-end Styles
+   ========================================================================== */
+
+/* Reset box-sizing for plugin scope */
+.xsto-ps-spacer *,
+.xsto-ps-spacer *::before,
+.xsto-ps-spacer *::after {
+    box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   Spacer & Section
+   -------------------------------------------------------------------------- */
+.xsto-ps-spacer {
+    position: relative;
+    /* Height set by JS: count * 100vh */
+}
+
+.xsto-ps {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: #016CB2;
+}
+
+.xsto-ps__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 80px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    height: 100%;
+    align-items: start;
+}
+
+/* --------------------------------------------------------------------------
+   Left Column
+   -------------------------------------------------------------------------- */
+.xsto-ps__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding-right: 20px;
+}
+
+.xsto-ps__label {
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #57AEE7;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.xsto-ps__heading {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 1.15;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+}
+
+.xsto-ps__text,
+.xsto-ps__text p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.65;
+    color: #E5E5E5;
+    margin: 0 0 24px 0;
+}
+
+.xsto-ps__divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 0 0 28px 0;
+}
+
+/* --------------------------------------------------------------------------
+   Card Stack
+   -------------------------------------------------------------------------- */
+.xsto-ps__card-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    aspect-ratio: 614 / 464;
+    /* Extra space for the stacked offset */
+    padding-bottom: 16px;
+    padding-right: 16px;
+}
+
+/* Shared card layer base */
+.xsto-ps__card,
+.xsto-ps__card-stack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 16px);
+    aspect-ratio: 614 / 464;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Main card — front */
+.xsto-ps__card {
+    z-index: 3;
+    background: #FFFFFF;
+    border: 2px solid #57AEE7;
+}
+
+/* Middle stack card */
+.xsto-ps__card-stack--1 {
+    z-index: 2;
+    top: 8px;
+    left: 8px;
+    border: 2px solid #3491CE;
+}
+
+/* Back stack card */
+.xsto-ps__card-stack--2 {
+    z-index: 1;
+    top: 16px;
+    left: 16px;
+    border: 2px solid #57AEE7;
+    opacity: 0.6;
+}
+
+/* --------------------------------------------------------------------------
+   Card Images (stacked inside each card layer)
+   -------------------------------------------------------------------------- */
+.xsto-ps__card-image,
+.xsto-ps__stack-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.xsto-ps__card-image.is-active,
+.xsto-ps__stack-image.is-active {
+    opacity: 1;
+}
+
+/* No image placeholder */
+.xsto-ps__card-image:not([style*="background-image"]),
+.xsto-ps__stack-image:not([style*="background-image"]) {
+    background: linear-gradient(135deg, #3491CE 0%, #016CB2 100%);
+}
+
+/* --------------------------------------------------------------------------
+   Card Gradient Overlay & Label
+   -------------------------------------------------------------------------- */
+.xsto-ps__card-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.xsto-ps__card-label {
+    position: absolute;
+    bottom: 20px;
+    left: 24px;
+    z-index: 6;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #FFFFFF;
+    transition: opacity 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Right Column
+   -------------------------------------------------------------------------- */
+.xsto-ps__right {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.xsto-ps__right-track {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    /* JS will translate this track */
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    padding-top: 80px;
+}
+
+/* Top fade mask */
+.xsto-ps__right-fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, #016CB2 0%, transparent 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Right Column Items
+   -------------------------------------------------------------------------- */
+.xsto-ps__item {
+    opacity: 0.2;
+    transition: opacity 0.5s ease;
+    padding: 32px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.xsto-ps__item:first-child {
+    border-top: none;
+}
+
+.xsto-ps__item.is-active {
+    opacity: 1;
+}
+
+.xsto-ps__item-number {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #57AEE7;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.xsto-ps__item-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.2;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+}
+
+.xsto-ps__item-desc {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.65;
+    color: #E5E5E5;
+    margin: 0 0 12px 0;
+}
+
+.xsto-ps__item-ideal {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    font-style: italic;
+    color: #57AEE7;
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — Tablet
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    .xsto-ps__inner {
+        padding: 60px 40px;
+        gap: 40px;
+    }
+
+    .xsto-ps__heading {
+        font-size: 36px;
+    }
+
+    .xsto-ps__item-title {
+        font-size: 28px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — Mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .xsto-ps-spacer {
+        height: auto !important;
+    }
+
+    .xsto-ps {
+        position: relative;
+        height: auto;
+        overflow: visible;
+    }
+
+    .xsto-ps__inner {
+        grid-template-columns: 1fr;
+        padding: 48px 20px;
+        gap: 32px;
+        height: auto;
+    }
+
+    .xsto-ps__left {
+        height: auto;
+        padding-right: 0;
+    }
+
+    .xsto-ps__heading {
+        font-size: 30px;
+    }
+
+    .xsto-ps__card-wrapper {
+        max-width: 100%;
+    }
+
+    .xsto-ps__right {
+        height: auto;
+        overflow: visible;
+    }
+
+    .xsto-ps__right-track {
+        transform: none !important;
+        padding-top: 0;
+    }
+
+    .xsto-ps__right-fade {
+        display: none;
+    }
+
+    .xsto-ps__item {
+        opacity: 1;
+    }
+
+    .xsto-ps__item-title {
+        font-size: 24px;
+    }
+}

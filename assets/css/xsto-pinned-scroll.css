@@ -84,50 +84,51 @@
 }
 
 /* --------------------------------------------------------------------------
-   Card Stack
+   Card Stack — cards peek from the BOTTOM only (no right offset)
    -------------------------------------------------------------------------- */
 .xsto-ps__card-wrapper {
     position: relative;
     width: 100%;
-    max-width: 540px;
-    aspect-ratio: 614 / 464;
-    /* Extra space for the stacked offset */
-    padding-bottom: 16px;
-    padding-right: 16px;
+    max-width: 100%;
+    /* Reserve space for the bottom-peeking cards */
+    padding-bottom: 8px;
 }
 
-/* Shared card layer base */
-.xsto-ps__card,
+/* Main card — front */
+.xsto-ps__card {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    aspect-ratio: 614 / 464;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #FFFFFF;
+    border: 2px solid #57AEE7;
+}
+
+/* Shared stacked card base — smaller & centered */
 .xsto-ps__card-stack {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: calc(100% - 16px);
+    left: 50%;
+    transform: translateX(-50%);
     aspect-ratio: 614 / 464;
     border-radius: 12px;
     overflow: hidden;
 }
 
-/* Main card — front */
-.xsto-ps__card {
-    z-index: 3;
-    background: #FFFFFF;
-    border: 2px solid #57AEE7;
-}
-
-/* Middle stack card */
+/* Middle stack — 96% width, peeks 4px below main card bottom */
 .xsto-ps__card-stack--1 {
     z-index: 2;
-    top: 8px;
-    left: 8px;
+    width: 96%;
+    bottom: -4px;
     border: 2px solid #3491CE;
 }
 
-/* Back stack card */
+/* Back stack — 92% width, peeks 8px below main card bottom */
 .xsto-ps__card-stack--2 {
     z-index: 1;
-    top: 16px;
-    left: 16px;
+    width: 92%;
+    bottom: -8px;
     border: 2px solid #57AEE7;
     opacity: 0.6;
 }
@@ -178,7 +179,7 @@
     z-index: 6;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 28px;
     color: #FFFFFF;
     transition: opacity 0.3s ease;
 }

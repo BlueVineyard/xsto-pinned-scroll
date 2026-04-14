@@ -122,27 +122,18 @@
     function translateTrack(idx, progress) {
         if (!track || !rightCol) return;
 
-        // Calculate how much to shift the track upward
-        // Each item occupies an equal portion of the scroll
-        var itemFraction = 1 / count;
-        var itemProgress = (progress - (idx * itemFraction)) / itemFraction;
-        itemProgress = Math.min(Math.max(itemProgress, 0), 1);
-
         // Get the target item's offset within the track
         var targetItem = items[idx];
         if (!targetItem) return;
 
-        var trackRect = track.getBoundingClientRect();
-        var itemRect  = targetItem.getBoundingClientRect();
-        var rightRect = rightCol.getBoundingClientRect();
-
         // We want the active item vertically centered in the right column
-        var rightCenter = rightRect.height / 2;
+        var rightHeight = rightCol.offsetHeight;
+        var rightCenter = rightHeight / 2;
         var itemCenter  = targetItem.offsetTop + (targetItem.offsetHeight / 2);
         var translateY  = -(itemCenter - rightCenter);
 
         // Clamp so we don't over-translate
-        var maxTranslate = -(track.scrollHeight - rightCol.offsetHeight);
+        var maxTranslate = -(track.scrollHeight - rightHeight);
         translateY = Math.max(translateY, maxTranslate);
         translateY = Math.min(translateY, 0);
 

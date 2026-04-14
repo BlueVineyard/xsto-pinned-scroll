@@ -248,14 +248,17 @@ class Xsto_Admin {
             wp_die( 'Invalid nonce' );
         }
 
+        // WordPress adds slashes to all $_POST data — strip them first
+        $post_data = wp_unslash( $_POST );
+
         $data = array(
-            'section_label' => sanitize_text_field( $_POST['xsto_section_label'] ?? '' ),
-            'heading'       => sanitize_text_field( $_POST['xsto_heading'] ?? '' ),
-            'paragraph'     => wp_kses_post( $_POST['xsto_paragraph'] ?? '' ),
+            'section_label' => sanitize_text_field( $post_data['xsto_section_label'] ?? '' ),
+            'heading'       => sanitize_text_field( $post_data['xsto_heading'] ?? '' ),
+            'paragraph'     => wp_kses_post( $post_data['xsto_paragraph'] ?? '' ),
             'categories'    => array(),
         );
 
-        $cats = $_POST['xsto_cat'] ?? array();
+        $cats = $post_data['xsto_cat'] ?? array();
 
         // Re-index sequentially (sortable may send non-sequential keys)
         foreach ( $cats as $key => $cat ) {

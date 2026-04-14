@@ -85,6 +85,7 @@ class Xsto_Shortcode {
 
                     <!-- RIGHT COLUMN -->
                     <div class="xsto-ps__right">
+                        <div class="xsto-ps__right-fade"></div>
                         <div class="xsto-ps__right-track">
                             <?php foreach ( $categories as $i => $cat ) :
                                 $num    = str_pad( $i + 1, 2, '0', STR_PAD_LEFT );
@@ -100,7 +101,6 @@ class Xsto_Shortcode {
                                 </div>
                             <?php endforeach; ?>
                         </div>
-                        <div class="xsto-ps__right-fade"></div>
                     </div>
 
                 </div>

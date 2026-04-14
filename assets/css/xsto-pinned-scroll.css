@@ -90,6 +90,7 @@
     position: relative;
     width: 100%;
     max-width: 100%;
+    margin-top: auto;
     /* Reserve space for the bottom-peeking cards */
     padding-bottom: 8px;
 }
@@ -194,6 +195,7 @@
 }
 
 .xsto-ps__right-track {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -283,6 +285,53 @@
 
     .xsto-ps__item-title {
         font-size: 28px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — Short Viewports (e.g. 768px-tall laptops)
+   Only applies on desktop widths where pinning is active.
+   -------------------------------------------------------------------------- */
+@media (max-height: 800px) and (min-width: 769px) {
+    .xsto-ps__inner {
+        padding: 40px 40px;
+    }
+
+    .xsto-ps__heading {
+        font-size: 36px;
+        margin-bottom: 14px;
+    }
+
+    .xsto-ps__text,
+    .xsto-ps__text p {
+        font-size: 15px;
+        margin-bottom: 16px;
+    }
+
+    .xsto-ps__divider {
+        margin-bottom: 20px;
+    }
+
+    .xsto-ps__right-track {
+        padding-top: 40px;
+    }
+
+    .xsto-ps__right-fade {
+        height: 60px;
+    }
+
+    .xsto-ps__item {
+        padding: 20px 0;
+    }
+
+    .xsto-ps__item-title {
+        font-size: 26px;
+        margin-bottom: 8px;
+    }
+
+    .xsto-ps__item-desc {
+        font-size: 15px;
+        margin-bottom: 8px;
     }
 }
 
